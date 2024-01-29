@@ -27,8 +27,9 @@ func main() {
 		}
 		defer conn.Close()
 
+		client := client.New(conn)
 		// Solve the Proof of Work challenge and send the solution to the server.
-		response, err := client.SolveAndSendPoWSolution(conn)
+		response, err := client.SolveAndSendPoWSolution()
 		if err == nil {
 			// Receive and process the random quote from the server.
 			client.ProcessQuote(response)
